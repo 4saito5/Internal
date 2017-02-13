@@ -14,13 +14,13 @@
 MySQL
 dml_Internal.sql
 
-フロント側のビルド
+フロント側のビルド   
 `.\node_modules\.bin\webpack`
 
-フロント側のビルド＆確認
+フロント側のビルド＆確認   
 `npm start`
 
-フロント＋バックのビルド＆確認
+フロント＋バックのビルド＆確認   
 `.\gradlew jettyRun`
 
 http://localhost:3000/internal
