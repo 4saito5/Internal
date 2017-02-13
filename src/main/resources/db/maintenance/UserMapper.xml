@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user.mybatis">
+
+  <select id="getUserList" resultType="map" fetchSize="100">
+    SELECT
+        us.user_id,
+        cd.value AS "auth",
+        us.last_name,
+        us.first_name,
+        us.birthday,
+        us.joined
+      FROM
+        m_users us
+        LEFT JOIN m_code cd
+          ON us.auth = cd.seq
+      WHERE
+        cd.name = 'ATH'
+  </select>
+
+  <select id="getUser" resultType="map" fetchSize="1">
+    SELECT
+        us.*,
+        ath.value AS "authName"
+      FROM
+        m_users us
+        LEFT JOIN m_code ath
+          ON us.auth = ath.seq
+      WHERE
+          us.user_id = #{user_id}
+          AND ath.name = 'ATH'
+  </select>
+
+  <select id="getContact" resultType="map" fetchSize="5">
+    SELECT
+        *
+      FROM
+        m_contact
+      WHERE
+        id = #{user_id}
+      ORDER BY
+        type, seq
+  </select>
+
+</mapper>

@@ -1,0 +1,21 @@
+{
+  "name": "Internal",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "webpack": "webpack -w",
+    "lite": "lite-server",
+    "start": "concurrently \"npm run lite\" \"npm run webpack\""
+  },
+  "author": "Singo Saito",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "concurrently": "^2.2.0",
+    "lite-server": "^2.2.2",
+    "riotjs-loader": "^3.0.0",
+    "webpack": "^1.13.2"
+  }
+}

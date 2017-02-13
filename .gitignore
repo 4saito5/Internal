@@ -1,0 +1,9 @@
+.gradle
+.settings
+bin
+node_modules
+build
+.classpath
+.project
+bundle.js
+*.log

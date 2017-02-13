@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <Properties>
+         <Property name="logfileLayout">%d{yyyy-MM-dd HH:mm:ss.SSS} | [%t] | %-5level | %c{36} | %msg%n</Property>
+         <Property name="httplogfileLayout">%d{yyyy-MM-dd HH:mm:ss.SSS} | [%t] | %-5level | %msg%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{DEFAULT} | [%t] | %-5level | %c{36} | %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+          <AppenderRef ref="Console"/>
+        </Root>
+        <!-- 以下、MyBatisの個別設定 -->
+        <Logger name="login.mybatis" level="info" additivity="false">
+          <AppenderRef ref="Console"/>
+        </Logger>
+
+    </Loggers>
+</configuration>

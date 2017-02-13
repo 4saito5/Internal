@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <properties resource="config.properties"/>
+
+  <settings>
+    <setting name="callSettersOnNulls" value="true"/>
+    <setting name="defaultStatementTimeout" value="25"/> <!-- seconds -->
+    <setting name="logImpl" value="LOG4J2"/>
+  </settings>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+        <property name="JDBC.DefaultAutoCommit" value="false" />
+      </transactionManager>
+      <!-- データソース -->
+      <dataSource type="POOLED">
+        <property name="driver" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+    <!-- Mapperファイルのパスを記述（ファイルが探しやすいようにアルファベット順に並べてください。） -->
+    <mapper resource="db/common/CodeMapper.xml"/>
+    <mapper resource="db/common/LoginMapper.xml"/>
+    <mapper resource="db/maintenance/UserMapper.xml"/>
+  </mappers>
+</configuration>

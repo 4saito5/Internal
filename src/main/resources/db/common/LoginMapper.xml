@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="login.mybatis">
+
+  <select id="getUser" resultType="map" fetchSize="1">
+    SELECT
+        us.user_id,
+        us.auth,
+        us.last_name,
+        us.first_name
+      FROM
+        m_users us
+        LEFT JOIN m_contact cn
+          ON us.user_id = cn.id
+      WHERE
+        (
+          us.user_id = #{login_id}
+          OR cn.contact = #{login_id}
+        )
+        AND us.password = #{password}
+        AND (
+          us.quited IS NULL
+          OR us.quited > CURRENT_DATE ()
+        )
+        LIMIT 1
+  </select>
+
+</mapper>
